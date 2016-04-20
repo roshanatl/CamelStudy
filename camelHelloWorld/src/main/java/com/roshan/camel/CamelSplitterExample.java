@@ -57,7 +57,7 @@ public class CamelSplitterExample {
 							// listOfListOfSmallOrders);
 							exchange.getIn().setBody(listOfListOfSmallOrders);
 						}
-					}).split(body(), new MyAggregationStrategy()).parallelProcessing().to("direct:processItems")
+					}).split(body(), new OrderAggregationStrategy()).parallelProcessing().to("direct:processItems")
 							.end().log("Order processed: ${body.size}").process(new Processor() {
 
 						public void process(Exchange exchange) throws Exception {

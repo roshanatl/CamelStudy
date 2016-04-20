@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.camel.Exchange;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
 
-public class MyAggregationStrategy implements AggregationStrategy {
+public class OrderAggregationStrategy implements AggregationStrategy {
 	 
 	 @SuppressWarnings("unchecked")
 	public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
