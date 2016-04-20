@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Order {
 
-    private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+    private List<Item> orderItems = new ArrayList<Item>();
 
     private int number;
 
@@ -14,14 +14,14 @@ public class Order {
     }
 
     public void addItem(String itemName, int quantity, int price) {
-        this.orderItems.add(new OrderItem(this,itemName, quantity, price));
+        this.orderItems.add(new Item(this,itemName, quantity, price));
     }
 
     public int getNumber() {
         return number;
     }
 
-    public List<OrderItem> getItems() {
+    public List<Item> getItems() {
         return this.orderItems;
     }
     

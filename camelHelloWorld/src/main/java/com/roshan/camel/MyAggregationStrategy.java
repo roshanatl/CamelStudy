@@ -11,10 +11,10 @@ public class MyAggregationStrategy implements AggregationStrategy {
 	 @SuppressWarnings("unchecked")
 	public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
 		 
-		 List<OrderItem> finalList;
+		 List<Item> finalList;
          Exchange resultExchange;
          if (oldExchange == null) {
-        	 finalList = new ArrayList<OrderItem>();
+        	 finalList = new ArrayList<Item>();
              resultExchange = newExchange;
          } else {
         	 finalList = oldExchange.getIn().getBody(List.class);

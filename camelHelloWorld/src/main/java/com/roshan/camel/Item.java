@@ -1,13 +1,13 @@
 package com.roshan.camel;
 
-public class OrderItem {
+public class Item {
     private Order order;
     private String itemName;
     private int quantity;
     private int price;
     private boolean processed;
     
-    public OrderItem(Order order, String itemName, int quantity, int price) {
+    public Item(Order order, String itemName, int quantity, int price) {
         this.order = order;
         this.itemName = itemName;
         this.quantity = quantity;
