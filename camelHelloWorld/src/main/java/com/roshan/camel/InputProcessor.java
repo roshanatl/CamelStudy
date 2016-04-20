@@ -1,4 +1,4 @@
-package com.javarticles.camel;
+package com.roshan.camel;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

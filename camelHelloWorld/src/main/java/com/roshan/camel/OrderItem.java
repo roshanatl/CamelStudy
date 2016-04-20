@@ -1,4 +1,4 @@
-package com.javarticles.camel;
+package com.roshan.camel;
 
 public class OrderItem {
     private Order order;

@@ -1,4 +1,4 @@
-package com.javarticles.camel;
+package com.roshan.camel;
 
 import java.util.ArrayList;
 import java.util.List;
