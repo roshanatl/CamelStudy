@@ -32,33 +32,18 @@ public class CamelSplitterExample {
 					// Split the input in group of 10 & call the
 					// processOrderitem route
 					// The aggregator joins the results back.
-					from("direct:processOrder").log("Process order ${body}").process(new Processor() {
+					from("direct:processOrder").log("Process order ${body}")
+					
+					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
-							startTime = System.currentTimeMillis();
-							int orderSpiltCount = 0;
-							final int orderBatchSize = 10;
-							Order order = exchange.getIn().getBody(Order.class);
-							List<List<Item>> listOfListOfSmallOrders = new ArrayList<List<Item>>();
-							int Start = orderSpiltCount * orderBatchSize;
-							int end;
-							int size = order.getItems().size();
-							while (size > Start) {
-								List<Item> smallOrders = new ArrayList<Item>();
-								end = Start + orderBatchSize;
-								if (end > size) {
-									end = size;
-								}
-								smallOrders = order.getItems().subList(Start, end);
-								orderSpiltCount++;
-								listOfListOfSmallOrders.add(smallOrders);
-								Start = orderSpiltCount * orderBatchSize;
-							}
-							// System.out.println("Splitted Orders : " +
-							// listOfListOfSmallOrders);
-							exchange.getIn().setBody(listOfListOfSmallOrders);
+							startTime = System.currentTimeMillis();							
 						}
-					}).split(body(), new OrderAggregationStrategy()).parallelProcessing().to("direct:processItems")
-							.end().log("Order processed: ${body.size}").process(new Processor() {
+					})
+					.process(new ItemListSplitProcessor())
+					.split(body(), new OrderAggregationStrategy()).parallelProcessing()					
+					.to("direct:processItems").end()
+					
+					.log("Order processed: ${body.size}").process(new Processor() {
 
 						public void process(Exchange exchange) throws Exception {
 							endTime = System.currentTimeMillis();
