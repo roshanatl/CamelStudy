@@ -1,4 +1,4 @@
-package com.roshan.camel;
+package com.roshan.SplitAndAggregate;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
