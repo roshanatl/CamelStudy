@@ -1,4 +1,4 @@
-package com.roshan.camel.ExcetionHandling;
+package com.roshan.ExcetionHandling;
 
 import org.apache.camel.component.http4.HttpOperationFailedException;
 import org.apache.camel.Exchange;

@@ -1,4 +1,4 @@
-package com.roshan.camel;
+package com.roshan.SplitAndAggregate;
 
 import java.util.List;
 

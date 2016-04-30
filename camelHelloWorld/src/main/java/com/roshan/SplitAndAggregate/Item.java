@@ -1,4 +1,4 @@
-package com.roshan.camel;
+package com.roshan.SplitAndAggregate;
 
 public class Item {
     private Order order;

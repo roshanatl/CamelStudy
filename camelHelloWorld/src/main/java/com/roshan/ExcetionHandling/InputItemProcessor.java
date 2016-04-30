@@ -1,4 +1,4 @@
-package com.roshan.camel.ExcetionHandling;
+package com.roshan.ExcetionHandling;
 
 import java.util.Date;
 
