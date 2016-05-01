@@ -8,6 +8,7 @@ public class RetryRuleset {
 	public boolean shouldRetry(@Header(Exchange.REDELIVERY_COUNTER) Integer counter, Exception causedBy) {
 		
 		HttpOperationFailedException httpE = (HttpOperationFailedException) causedBy;
+		//For status code 500 retry 3 times.
 		if(httpE.getStatusCode() == 500 && counter <3){
 			return true;
 		}

@@ -28,11 +28,13 @@ public class CamelExceptionHandle {
 				public void configure() {
 					//Retry only for reason codes defined in RetryRuleset eg:500
 					onException(HttpOperationFailedException.class)
-					.onWhen(bean(ExceptionRuleset.class))
-					.retryWhile(bean(RetryRuleset.class))
-					.redeliveryDelay(2);
+					.onWhen(method(ExceptionRuleset.class))//The onWhen predicate filter allows more fine-grained control over when an onException
+					                                       //should be triggered.
+					.retryWhile(method(RetryRuleset.class))//retryWhile to implement your own generic retry ruleset that determines
+														   //how long it should retry
+					.redeliveryDelay(2); //Redelivery delay in ms 
 					
-					//.handled(true); //ignore the other failures
+					
 
 					// This route generate items input & call the
 					// processItems Route

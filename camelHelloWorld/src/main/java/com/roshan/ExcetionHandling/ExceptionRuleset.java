@@ -8,6 +8,7 @@ public class ExceptionRuleset {
 public boolean shouldHandle(@Header(Exchange.REDELIVERY_COUNTER) Integer counter, Exception causedBy) {
 		
 		HttpOperationFailedException httpE = (HttpOperationFailedException) causedBy;
+		//We are interested only in status code 500.
 		if(httpE.getStatusCode() == 500 ){
 			return true;
 		}

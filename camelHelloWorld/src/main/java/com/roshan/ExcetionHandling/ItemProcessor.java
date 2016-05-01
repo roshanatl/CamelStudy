@@ -14,7 +14,7 @@ public class ItemProcessor {
     	if(item.getQuantity() == 1 && item.getRetry() <2 )
     	{
     		System.out.println("HttpOperationFailedException********************************");
-    		throw new HttpOperationFailedException("hello", 400, "failed", null, null, null);
+    		throw new HttpOperationFailedException("hello", 500, "failed", null, null, null);
     	}
 //    	if(count==2)
 //    	{
