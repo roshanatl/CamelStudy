@@ -47,7 +47,7 @@ public class JsonMap {
 			String name = null;
 			String number= null;
 			
-			Map<String, Object> myMap=jsonString2Map(jsonString);
+			Map<String, Object> myMap=jsonString2Map(jsonString,null);
 			Map<String, Object> divisionDepartment = jsonString2Map(myMap.get("divisionDepartment").toString());
 			if(divisionDepartment.get("buId")!=null)
 			{
@@ -73,15 +73,20 @@ public class JsonMap {
 		
 		
 	}
-	private static Map<String, Object> jsonString2Map(String jsonString)
+	private static Map<String, Object> jsonString2Map(String jsonString,String prependKey)
 			throws JSONException {
 		Map<String, Object> keys = new HashMap();
 		JSONObject jsonObject = new JSONObject(jsonString);
 		Iterator<?> keyset = jsonObject.keys();
 		while (keyset.hasNext()) {
+			
 			String key = (String) keyset.next();
-			Object value = jsonObject.get(key);	
-			keys.put(key, value);
+			Object value = jsonObject.get(key);
+			if (value instanceof JSONObject) {				
+				Map<String, Object> temp = jsonString2Map(value.toString(),String key);
+				keys.putAll(temp);
+			} 
+			keys.put("prependKey."+key, value);
 		}
 		return keys;
 	}
